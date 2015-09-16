@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+   <constant name="struts.objectFactory" value="spring" /> 
+    <!--  用spring作为对象工厂来替代struts2来创建action-->
+   <package name="pck" extends="struts-default">
+   
+       <default-interceptor-ref name="paramsPrepareParamsStack"></default-interceptor-ref>
+   
+       <action name="index" class="com.tony.action.IndexAction">
+            <result>/WEB-INF/content/welcome.jsp</result>
+       </action>
+       
+       
+       <action name="user_*"  class="com.tony.action.UserAction" method="{1}">
+        <interceptor-ref name="defaultStack"/>
+	   	<result name="success">/WEB-INF/content/welcome.jsp</result> 
+	   	<result name="registerRedirect">/WEB-INF/content/register.jsp</result>
+	   	<result name="registerSuccess">/WEB-INF/content/registerSuccess.jsp</result>
+	   	<result name="loginRedirect">/WEB-INF/content/login.jsp</result>
+	   	<result name="loginSuccess">/WEB-INF/content/loginSuccess.jsp</result>
+	   	<result name="loginFail">/WEB-INF/content/login.jsp</result>
+	   	<result name="personalCenter">/WEB-INF/content/personalCenter.jsp</result>
+	   </action>
+	   
+	   <action name="topic_*"  class="com.tony.action.TopicAction" method="{1}">
+        <interceptor-ref name="defaultStack"/>
+	   	<result name="showTopic">/WEB-INF/content/showTopic.jsp</result> 
+	   	<result name="addTopicRedirect">/WEB-INF/content/addTopic.jsp</result>
+	   	<result name="addTopicSuccess" type="redirectAction">user_personalCenter.action</result>
+	   </action>
+	   
+	   <action name="search_*"  class="com.tony.action.SearchAction" method="{1}">
+        <interceptor-ref name="defaultStack"/>
+        <result name="showResult">/WEB-INF/content/showResult.jsp</result> 
+       </action>
+
+   </package>
+</struts>

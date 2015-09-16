@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.tony.bean.ForumType" table="tb_forumtype">
+        <id name="typeId" column="type_id" type="integer">
+            <generator class="native" />
+        </id>
+        <property name="typeName" column="type_name" type="string"/>
+        <property name="typeManager" column="type_manager" type="string"/>
+        <set name="topics" inverse="true" cascade="delete">
+            <key>
+                <column name="type_id"/>
+            </key>
+            <one-to-many class="com.tony.bean.Topic" />
+        </set>
+    </class>
+</hibernate-mapping>

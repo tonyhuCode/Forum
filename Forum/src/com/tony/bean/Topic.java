@@ -3,32 +3,32 @@ package com.tony.bean;
 import java.io.Serializable;
 import java.util.Set;
 
-public class Topic implements Serializable{
+public class Topic implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private int topicId;
-	/**帖子标题*/
+	/** 帖子标题 */
 	private String title;
-	/**帖子内容*/
+	/** 帖子内容 */
 	private String content;
-	/**帖子发布时间*/
+	/** 帖子发布时间 */
 	private String submitTime;
-	/**帖子查看数*/
+	/** 帖子查看数 */
 	private int scanCount;
-	/**帖子回复数*/
+	/** 帖子回复数 */
 	private int responseCount;
-	/**帖子所有回复集合*/
+	/** 帖子所有回复集合 */
 	private Set<Reply> replys;
-	/**帖子的作者*/
+	/** 帖子的作者 */
 	private User user;
-	/**帖子所属类别*/
+	/** 帖子所属类别 */
 	private ForumType forumType;
-	
+
 	public Topic() {
 		super();
 	}
-	
+
 	public Topic(String title, String content, String submitTime,
 			int scanCount, int responseCount, User user, ForumType forumType) {
 		super();

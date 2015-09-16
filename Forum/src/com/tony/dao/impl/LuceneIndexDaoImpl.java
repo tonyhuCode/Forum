@@ -19,7 +19,7 @@ import com.tony.util.DocumentUtils;
 import com.tony.util.LuceneUtils;
 
 @Repository("luceneIndexDao")
-public class LuceneIndexDaoImpl implements LuceneIndexDao{
+public class LuceneIndexDaoImpl implements LuceneIndexDao {
 
 	@Override
 	public void createIndex(CommonTopicReply common) {
@@ -38,22 +38,23 @@ public class LuceneIndexDaoImpl implements LuceneIndexDao{
 	public List<CommonTopicReply> search(String queryString) {
 		IndexSearcher indexSearcher = LuceneUtils.getIndexSearcher();
 		try {
-			QueryParser queryParser = LuceneUtils.getMultiFieldQueryParser(new String[] { "title", "content" });
+			QueryParser queryParser = LuceneUtils
+					.getMultiFieldQueryParser(new String[] { "title", "content" });
 			Query query = queryParser.parse(queryString);
-			
-			TopDocs topDocs  = indexSearcher.search(query, null, 100);
+
+			TopDocs topDocs = indexSearcher.search(query, null, 100);
 			Highlighter highlighter = LuceneUtils.getHighlighter(query);
-			
+
 			List<CommonTopicReply> resultList = new ArrayList<CommonTopicReply>();
-			for(int i = 0; i < topDocs.totalHits; i++){
+			for (int i = 0; i < topDocs.totalHits; i++) {
 				ScoreDoc scoreDoc = topDocs.scoreDocs[i];
 				int docSn = scoreDoc.doc;
 				Document doc = indexSearcher.doc(docSn);
-				
+
 				// ¸ßÁÁ
 				LuceneUtils.highlight(doc, "title", highlighter);
 				LuceneUtils.highlight(doc, "content", highlighter);
-				
+
 				CommonTopicReply common = DocumentUtils.document2common(doc);
 				resultList.add(common);
 			}

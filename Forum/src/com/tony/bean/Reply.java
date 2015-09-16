@@ -2,21 +2,20 @@ package com.tony.bean;
 
 import java.io.Serializable;
 
-
-public class Reply implements Serializable{
+public class Reply implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private int replyId;
-	/**回复内容*/
+	/** 回复内容 */
 	private String content;
-	/**回复时间*/
+	/** 回复时间 */
 	private String submitTime;
-	/**回复的用户*/
+	/** 回复的用户 */
 	private User user;
-	/**回复主题*/
+	/** 回复主题 */
 	private Topic topic;
-	
+
 	public Reply() {
 		super();
 	}

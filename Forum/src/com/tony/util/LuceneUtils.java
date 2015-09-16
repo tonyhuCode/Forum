@@ -41,6 +41,7 @@ public class LuceneUtils {
 
 	/**
 	 * 获取IndexWriter
+	 * 
 	 * @return
 	 */
 	public static IndexWriter getIndexWriter() {
@@ -50,8 +51,10 @@ public class LuceneUtils {
 			throw new RuntimeException(e);
 		}
 	}
+
 	/**
 	 * 关闭IndexWriter
+	 * 
 	 * @param indexWriter
 	 */
 	public static void closeIndexWriter(IndexWriter indexWriter) {
@@ -64,6 +67,7 @@ public class LuceneUtils {
 
 	/**
 	 * 获取IndexSearcher
+	 * 
 	 * @return
 	 */
 	public static IndexSearcher getIndexSearcher() {
@@ -73,8 +77,10 @@ public class LuceneUtils {
 			throw new RuntimeException(e);
 		}
 	}
+
 	/**
 	 * 关闭IndexSearcher
+	 * 
 	 * @param indexSearcher
 	 */
 	public static void closeIndexSearcher(IndexSearcher indexSearcher) {
@@ -91,6 +97,7 @@ public class LuceneUtils {
 
 	/**
 	 * 获取QueryParser
+	 * 
 	 * @param fields
 	 * @return
 	 */
@@ -109,11 +116,13 @@ public class LuceneUtils {
 
 	/**
 	 * 获取Highlighter
+	 * 
 	 * @param query
 	 * @return
 	 */
 	public static Highlighter getHighlighter(Query query) {
-		Formatter formatter = new SimpleHTMLFormatter("<span class='keyword'>", "</span>");
+		Formatter formatter = new SimpleHTMLFormatter("<span class='keyword'>",
+				"</span>");
 		Scorer scorer = new QueryScorer(query);
 		Highlighter highlighter = new Highlighter(formatter, scorer);
 
@@ -123,9 +132,11 @@ public class LuceneUtils {
 		return highlighter;
 	}
 
-	public static void highlight(Document doc, String fieldName, Highlighter highlighter) {
+	public static void highlight(Document doc, String fieldName,
+			Highlighter highlighter) {
 		try {
-			String ht = highlighter.getBestFragment(analyzer, fieldName, doc.get(fieldName));
+			String ht = highlighter.getBestFragment(analyzer, fieldName,
+					doc.get(fieldName));
 			if (ht == null) {
 				int end = Math.min(doc.get(fieldName).length(), fragmentSize);
 				ht = doc.get(fieldName).substring(0, end);

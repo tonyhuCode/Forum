@@ -1,5 +1,5 @@
 package com.tony.dao;
 
-public interface ReplyDao extends Dao{
+public interface ReplyDao extends Dao {
 
 }

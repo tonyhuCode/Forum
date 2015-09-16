@@ -3,28 +3,28 @@ package com.tony.bean;
 import java.io.Serializable;
 import java.util.Set;
 
-public class User implements Serializable{
+public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private int userId;
-	/**用户名*/
+	/** 用户名 */
 	private String username;
-	/**密码*/
+	/** 密码 */
 	private String password;
-	/**性别*/
+	/** 性别 */
 	private String sex;
-	/**头像*/
+	/** 头像 */
 	private String headImage;
-	/**签名*/
+	/** 签名 */
 	private String signature;
-	/**邮箱*/
+	/** 邮箱 */
 	private String email;
-	/**用户所有帖子*/
+	/** 用户所有帖子 */
 	private Set<Topic> topics;
-	/**用户所有回复*/
+	/** 用户所有回复 */
 	private Set<Reply> replys;
-	
+
 	public User() {
 		super();
 	}
@@ -39,7 +39,7 @@ public class User implements Serializable{
 		this.signature = signature;
 		this.email = email;
 	}
-	
+
 	public int getUserId() {
 		return userId;
 	}
@@ -112,5 +112,4 @@ public class User implements Serializable{
 		this.replys = replys;
 	}
 
-	
 }
